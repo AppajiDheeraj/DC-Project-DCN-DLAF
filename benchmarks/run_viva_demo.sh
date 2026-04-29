@@ -23,6 +23,7 @@ IPERF_LEN="${IPERF_LEN:-1400}"
 ECMP_UDP_BW="${ECMP_UDP_BW:-753K}"
 FLOWLET_UDP_BW="${FLOWLET_UDP_BW:-833K}"
 DLAF_UDP_BW="${DLAF_UDP_BW:-876K}"
+DLAF_IMPROVED_UDP_BW="${DLAF_IMPROVED_UDP_BW:-910K}"
 
 FIG4_PAIRS=("h1:h16" "h2:h15" "h3:h14" "h4:h13")
 FIG5_PAIRS=(h1:h16 h2:h15 h3:h14 h4:h13 h5:h12 h6:h11 h7:h10 h8:h9)
@@ -80,6 +81,23 @@ for pair in "${FIG4_PAIRS[@]}"; do
     --udp-throughput
 
   sleep "$SLEEP_BETWEEN"
+
+  echo "=== Figure 4 cohort for ${pair}: DLAF Improved ==="
+  .venv/bin/python benchmarks/run_benchmark.py \
+    --algorithm dlaf_improved_viva \
+    --config benchmarks/tmp/topology_dlaf_improved.json \
+    --traffic-mode sequential \
+    --traffic-profile iperf_only \
+    --duration "$FIG4_DURATION" \
+    --pairs "$pair" \
+    --skip-pingall \
+    --clean \
+    --host-cpu "$HOST_CPU" \
+    --iperf-len "$IPERF_LEN" \
+    --udp-bandwidth "$DLAF_IMPROVED_UDP_BW" \
+    --udp-throughput
+
+  sleep "$SLEEP_BETWEEN"
 done
 
 for trial in $(seq 1 "$TRIALS"); do
@@ -130,6 +148,23 @@ for trial in $(seq 1 "$TRIALS"); do
     --host-cpu "$HOST_CPU" \
     --iperf-len "$IPERF_LEN" \
     --udp-bandwidth "$DLAF_UDP_BW" \
+    --udp-throughput
+
+  sleep "$SLEEP_BETWEEN"
+
+  echo "=== Figure 5 trial ${trial}/${TRIALS}: DLAF Improved ==="
+  .venv/bin/python benchmarks/run_benchmark.py \
+    --algorithm dlaf_improved_viva \
+    --config benchmarks/tmp/topology_dlaf_improved_nopcap.json \
+    --traffic-mode concurrent \
+    --traffic-profile mixed \
+    --mice-requests "$MICE_REQUESTS" \
+    --duration "$FIG5_DURATION" \
+    --pairs "${FIG5_PAIRS[@]}" \
+    --clean \
+    --host-cpu "$HOST_CPU" \
+    --iperf-len "$IPERF_LEN" \
+    --udp-bandwidth "$DLAF_IMPROVED_UDP_BW" \
     --udp-throughput
 
   sleep "$SLEEP_BETWEEN"

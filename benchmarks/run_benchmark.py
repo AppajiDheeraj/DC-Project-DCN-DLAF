@@ -77,6 +77,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--pairs", nargs="*", default=DEFAULT_PAIRS)
     parser.add_argument("--clean", action="store_true")
     parser.add_argument("--skip-pingall", action="store_true")
+    parser.add_argument("--skip-pair-ping", action="store_true", help="Do not include per-pair ping probes in measured traffic")
     parser.add_argument("--timeout", type=int, default=420)
     parser.add_argument("--host-cpu", type=float, default=0.0)
     parser.add_argument("--sudo-password-env", default="BENCH_SUDO_PASS")
@@ -385,12 +386,19 @@ def counters(child: pexpect.spawn, interfaces: list[str]) -> dict[str, int]:
 def counter_summary(before: dict[str, int], after: dict[str, int]) -> dict[str, object]:
     deltas = {iface: max(0, after.get(iface, 0) - before.get(iface, 0)) for iface in before}
     vals = list(deltas.values())
+    active_vals = [value for value in vals if value > 0]
     avg = sum(vals) / len(vals) if vals else None
     sd = sample_sd(vals) if vals else None
+    active_avg = sum(active_vals) / len(active_vals) if active_vals else None
+    active_sd = sample_sd(active_vals) if active_vals else None
     return {
         "core_link_load_mean_pkts": avg,
         "core_link_load_sd_pkts": sd,
         "core_link_load_sd_over_mean": (sd / avg) if avg else None,
+        "active_core_link_count": len(active_vals),
+        "active_core_link_load_mean_pkts": active_avg,
+        "active_core_link_load_sd_pkts": active_sd,
+        "active_core_link_load_sd_over_mean": (active_sd / active_avg) if active_avg else None,
         "core_link_load_deltas_pkts": deltas,
     }
 
@@ -402,10 +410,10 @@ def run_controller(repo_dir: Path, controller: str, k: str, algorithm: str, pass
     return run_sudo(repo_dir, password, [str(py), str(repo_dir / controller), str(k), algorithm], timeout=120)
 
 
-def run_sequential(child: pexpect.spawn, pairs: list[tuple[str, str]], duration: int, iperf_len: int, udp_throughput: bool, udp_bandwidth: str) -> list[dict[str, object]]:
+def run_sequential(child: pexpect.spawn, pairs: list[tuple[str, str]], duration: int, iperf_len: int, udp_throughput: bool, udp_bandwidth: str, skip_pair_ping: bool) -> list[dict[str, object]]:
     rows = []
     for src, dst in pairs:
-        loss, rtt = parse_ping(mn_cmd(child, f"{src} ping -c 5 {dst}", timeout=120))
+        loss, rtt = (None, None) if skip_pair_ping else parse_ping(mn_cmd(child, f"{src} ping -c 5 {dst}", timeout=120))
         mn_cmd(child, f"{dst} {iperf_server_cmd(5001, udp=udp_throughput)} > /tmp/iperf_s_5001.log 2>&1 &", timeout=30)
         mn_cmd(child, "sh sleep 1", timeout=30)
         try:
@@ -477,7 +485,9 @@ def collect_mice(child: pexpect.spawn, pairs: list[tuple[str, str]]) -> list[int
 
 
 def run_concurrent(child: pexpect.spawn, pairs: list[tuple[str, str]], args: argparse.Namespace) -> tuple[list[dict[str, object]], dict[str, object] | None, list[int]]:
-    ping_stats = {pair: parse_ping(mn_cmd(child, f"{pair[0]} ping -c 5 {pair[1]}", timeout=120)) for pair in pairs}
+    ping_stats = {pair: (None, None) for pair in pairs} if args.skip_pair_ping else {
+        pair: parse_ping(mn_cmd(child, f"{pair[0]} ping -c 5 {pair[1]}", timeout=120)) for pair in pairs
+    }
     ports = {}
     for idx, pair in enumerate(pairs):
         src, dst = pair
@@ -590,7 +600,7 @@ def main() -> None:
         before = counters(child, interfaces)
         if args.traffic_mode == "sequential":
             log_section("traffic phase: sequential")
-            rows = run_sequential(child, pairs, args.duration, args.iperf_len, args.udp_throughput, args.udp_bandwidth)
+            rows = run_sequential(child, pairs, args.duration, args.iperf_len, args.udp_throughput, args.udp_bandwidth, args.skip_pair_ping)
             mixed_meta = None
             mice_done = []
         else:
@@ -619,6 +629,7 @@ def main() -> None:
             "udp_bandwidth": args.udp_bandwidth if args.udp_throughput else None,
             "traffic_mode": args.traffic_mode,
             "traffic_profile": args.traffic_profile,
+            "skip_pair_ping": args.skip_pair_ping,
             "throughput_protocol": summarize_protocols(rows),
             "mean_throughput_mbps": statistics.mean(throughputs) if throughputs else None,
             "stdev_throughput_mbps": statistics.pstdev(throughputs) if len(throughputs) > 1 else 0.0,

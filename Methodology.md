@@ -38,6 +38,21 @@
 - Timeout: 100µs (paper's optimal value)
 - Load tracking: Per-core switch counters with decay
 
+### DLAF Improved (Project Innovation Variant)
+- Builds on the original DLAF P4 implementation in `simulation/dlaf_4hash.p4`
+- Implemented separately as `simulation/dlaf_improved.p4` so the paper baseline remains unchanged
+- Uses 32-bit flow signatures and CRC32-based salted table indexes to reduce structured collisions
+- Tracks per-flow packet count and smoothed inter-packet gap
+- Estimates gap variance using smoothed gap deviation
+- Uses an adaptive flowlet threshold:
+  - mice flows receive a larger gap to prevent unnecessary splitting
+  - stable high-rate flows receive a smaller gap for faster rebalancing
+  - high-variance flows receive a safer larger gap to reduce packet reordering risk
+- Applies elephant-flow awareness by weighting large/high-count flows more heavily in port load counters
+- Fixes baseline DLAF implementation issues:
+  - table-4 timestamp refresh bug
+  - oldest-bucket eviction cases that could fail to install a new flow entry
+
 ## Evaluation Metrics
 
 ### Primary Metrics
@@ -53,6 +68,7 @@
    - ECMP: 778 kbps
    - Flowlet: 860 kbps
    - DLAF: 904 kbps (+16% vs ECMP)
+   - DLAF Improved: evaluated against DLAF using `benchmarks/compare_dlaf_improved.sh`
 
 3. **Flowlet Gap Sensitivity** (Table I)
    - Measure: Flowlet count and gap distribution
@@ -101,6 +117,10 @@
    - Generate bar charts for each metric
    - Compute improvement %: (baseline - algorithm) / baseline × 100
    - Export results as CSV and PNG for web display
+   - The DLAF vs DLAF Improved comparison produces:
+     - `benchmarks/results/dlaf_vs_dlaf_improved_comparison.png`
+     - per-run `summary.json` files under `benchmarks/results/dlaf_compare_*`
+     - per-run `summary.json` files under `benchmarks/results/dlaf_improved_compare_*`
 
 ## Fairness Considerations
 
@@ -109,3 +129,4 @@
 - Equal link capacities across topology
 - No packet loss (unlimited buffer simulation)
 - Timeout values held constant across runs (except sensitivity study)
+- DLAF Improved is compared against DLAF using the same topology, host pairs, packet size, duration, and traffic mode

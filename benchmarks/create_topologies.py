@@ -13,6 +13,7 @@ ALGORITHMS = {
     "ecmp": "simulation/ecmp_switching.p4",
     "flowlet": "simulation/flowlet_switching.p4",
     "dlaf": "simulation/dlaf_4hash.p4",
+    "dlaf_improved": "simulation/dlaf_improved.p4",
     "dlaf2": "simulation/dlaf.p4",
     "dlaf_counter": "simulation/dlaf_counter.p4",
     "dlaf4_no_plc": "simulation/dlaf_4hash_no_plc.p4",

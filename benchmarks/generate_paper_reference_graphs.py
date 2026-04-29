@@ -13,9 +13,9 @@ from typing import Any
 import matplotlib.pyplot as plt
 
 
-ALGO_ORDER = ["ecmp", "flowlet", "dlaf"]
-ALGO_LABEL = {"ecmp": "ECMP", "flowlet": "Flowlet", "dlaf": "DLAF"}
-COLORS = ["#4C78A8", "#F58518", "#54A24B"]
+ALGO_ORDER = ["ecmp", "flowlet", "dlaf", "dlaf_improved"]
+ALGO_LABEL = {"ecmp": "ECMP", "flowlet": "Flowlet", "dlaf": "DLAF", "dlaf_improved": "DLAF Improved"}
+COLORS = ["#4C78A8", "#F58518", "#54A24B", "#B279A2"]
 
 
 def parse_args() -> argparse.Namespace:
@@ -36,6 +36,8 @@ def to_float(value: Any) -> float | None:
 
 def canonical_algorithm_name(value: str) -> str:
     algo = (value or "").strip().lower()
+    if "dlaf_improved" in algo or "dlaf-improved" in algo or "dlaf improved" in algo:
+        return "dlaf_improved"
     if "ecmp" in algo:
         return "ecmp"
     if "flowlet" in algo:
@@ -106,6 +108,7 @@ def load_rows(results_dir: Path) -> list[dict[str, Any]]:
             "jain_fairness": to_float(summary.get("jain_fairness")),
             "loss_pct": to_float(summary.get("mean_loss_pct")),
             "core_sd_over_mean": to_float(summary.get("core_link_load_sd_over_mean")),
+            "active_core_sd_over_mean": to_float(summary.get("active_core_link_load_sd_over_mean")),
             "core_sd_pkts": to_float(summary.get("core_link_load_sd_pkts")),
         }
         row["throughput_efficiency_score"] = throughput_efficiency(
@@ -183,10 +186,10 @@ def fig4_plot(cohorts: list[dict[str, Any]], out_dir: Path) -> dict[str, Any] | 
             values[algo].append(value or 0.0)
 
     x = list(range(len(use)))
-    width = 0.25
+    width = 0.18
     fig, ax = plt.subplots(figsize=(9, 4.8))
     for idx, algo in enumerate(ALGO_ORDER):
-        ax.bar([pos + (idx - 1) * width for pos in x], values[algo], width=width, label=ALGO_LABEL[algo], color=COLORS[idx])
+        ax.bar([pos + (idx - 1.5) * width for pos in x], values[algo], width=width, label=ALGO_LABEL[algo], color=COLORS[idx])
     ax.set_title("Figure 4 Style: Load-Balancing Effectiveness")
     ax.set_ylabel("Core-link SD / Mean (lower is better)")
     ax.set_xticks(x)
@@ -292,10 +295,10 @@ def main() -> None:
         "load_balance": metric_plot(
             fig5_cohorts,
             out_dir,
-            "core_sd_over_mean",
+            "active_core_sd_over_mean",
             "metric_load_balance_sd_over_mean.png",
             "Load Balance",
-            "Core-link SD / Mean",
+            "Active core-link SD / Mean",
             False,
         ),
         "fairness": metric_plot(
