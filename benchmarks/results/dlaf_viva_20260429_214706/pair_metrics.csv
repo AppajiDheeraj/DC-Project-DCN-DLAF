@@ -1,0 +1,9 @@
+src,dst,loss_pct,avg_rtt_ms,throughput_mbps,throughput_protocol
+h1,h16,0.0,15.784,0.904,udp
+h2,h15,0.0,17.644,0.904,udp
+h3,h14,0.0,16.918,0.904,udp
+h4,h13,0.0,16.098,0.904,udp
+h5,h12,0.0,16.137,0.904,udp
+h6,h11,0.0,15.125,0.904,udp
+h7,h10,0.0,18.167,0.904,udp
+h8,h9,0.0,17.85,0.904,udp

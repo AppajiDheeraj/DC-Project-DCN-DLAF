@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="560" viewBox="0 0 1080 560">
+<style>
+text{font-family:Arial,Helvetica,sans-serif;fill:#20242a}
+.title{font-size:22px;font-weight:700}
+.axis{stroke:#20242a;stroke-width:1.2}
+.grid{stroke:#d7dde5;stroke-width:1}
+.tick{font-size:12px;fill:#4b5563}
+.label{font-size:13px;fill:#303846}
+.value{font-size:12px;fill:#303846;font-weight:700}
+.legend{font-size:13px;fill:#303846}
+</style>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="540.00" y="34" class="title" text-anchor="middle">Flowlet Gaps for Different DLAF Configurations</text>
+<line x1="86" y1="64" x2="86" y2="472" class="axis"/>
+<line x1="86" y1="472" x2="890" y2="472" class="axis"/>
+<line x1="86" y1="472.00" x2="890" y2="472.00" class="grid"/>
+<text x="76" y="476.00" class="tick" text-anchor="end">0</text>
+<line x1="86" y1="390.40" x2="890" y2="390.40" class="grid"/>
+<text x="76" y="394.40" class="tick" text-anchor="end">1.33e+04</text>
+<line x1="86" y1="308.80" x2="890" y2="308.80" class="grid"/>
+<text x="76" y="312.80" class="tick" text-anchor="end">2.66e+04</text>
+<line x1="86" y1="227.20" x2="890" y2="227.20" class="grid"/>
+<text x="76" y="231.20" class="tick" text-anchor="end">4e+04</text>
+<line x1="86" y1="145.60" x2="890" y2="145.60" class="grid"/>
+<text x="76" y="149.60" class="tick" text-anchor="end">5.33e+04</text>
+<line x1="86" y1="64.00" x2="890" y2="64.00" class="grid"/>
+<text x="76" y="68.00" class="tick" text-anchor="end">6.66e+04</text>
+<text x="22" y="268.00" class="label" text-anchor="middle" transform="rotate(-90 22 268.00)">Gap (packets)</text>
+<text x="126.62" y="512" class="label" text-anchor="middle">8x512</text>
+<rect x="87.00" y="468.79" width="25.08" height="3.21" fill="#355c7d"/>
+<rect x="114.08" y="398.54" width="25.08" height="73.46" fill="#c06c84"/>
+<rect x="141.17" y="434.83" width="25.08" height="37.17" fill="#6c9a8b"/>
+<text x="229.88" y="512" class="label" text-anchor="middle">4x1K</text>
+<rect x="190.25" y="471.85" width="25.08" height="0.15" fill="#355c7d"/>
+<rect x="217.33" y="369.77" width="25.08" height="102.23" fill="#c06c84"/>
+<rect x="244.42" y="435.11" width="25.08" height="36.89" fill="#6c9a8b"/>
+<text x="333.12" y="512" class="label" text-anchor="middle">2x2K</text>
+<rect x="293.50" y="471.99" width="25.08" height="0.01" fill="#355c7d"/>
+<rect x="320.58" y="311.81" width="25.08" height="160.19" fill="#c06c84"/>
+<rect x="347.67" y="435.59" width="25.08" height="36.41" fill="#6c9a8b"/>
+<text x="436.38" y="512" class="label" text-anchor="middle">1x4K</text>
+<rect x="396.75" y="471.99" width="25.08" height="0.01" fill="#355c7d"/>
+<rect x="423.83" y="293.05" width="25.08" height="178.95" fill="#c06c84"/>
+<rect x="450.92" y="435.88" width="25.08" height="36.12" fill="#6c9a8b"/>
+<text x="539.62" y="512" class="label" text-anchor="middle">8x1K</text>
+<rect x="500.00" y="468.79" width="25.08" height="3.21" fill="#355c7d"/>
+<rect x="527.08" y="325.07" width="25.08" height="146.93" fill="#c06c84"/>
+<rect x="554.17" y="397.66" width="25.08" height="74.34" fill="#6c9a8b"/>
+<text x="642.88" y="512" class="label" text-anchor="middle">4x2K</text>
+<rect x="603.25" y="471.85" width="25.08" height="0.15" fill="#355c7d"/>
+<rect x="630.33" y="267.54" width="25.08" height="204.46" fill="#c06c84"/>
+<rect x="657.42" y="398.21" width="25.08" height="73.79" fill="#6c9a8b"/>
+<text x="746.12" y="512" class="label" text-anchor="middle">2x4K</text>
+<rect x="706.50" y="471.99" width="25.08" height="0.01" fill="#355c7d"/>
+<rect x="733.58" y="151.62" width="25.08" height="320.38" fill="#c06c84"/>
+<rect x="760.67" y="399.18" width="25.08" height="72.82" fill="#6c9a8b"/>
+<text x="849.38" y="512" class="label" text-anchor="middle">1x8K</text>
+<rect x="809.75" y="471.99" width="25.08" height="0.01" fill="#355c7d"/>
+<rect x="836.83" y="114.11" width="25.08" height="357.89" fill="#c06c84"/>
+<rect x="863.92" y="399.77" width="25.08" height="72.23" fill="#6c9a8b"/>
+<rect x="914" y="68" width="16" height="16" fill="#355c7d"/>
+<text x="938" y="81" class="legend">Min</text>
+<rect x="914" y="96" width="16" height="16" fill="#c06c84"/>
+<text x="938" y="109" class="legend">Max</text>
+<rect x="914" y="124" width="16" height="16" fill="#6c9a8b"/>
+<text x="938" y="137" class="legend">Average</text>
+</svg>

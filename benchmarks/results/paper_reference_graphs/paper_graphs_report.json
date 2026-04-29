@@ -1,0 +1,130 @@
+{
+  "total_runs_found": 15,
+  "complete_cohorts_found": 5,
+  "selection_policy": "Graphs use complete ECMP+Flowlet+DLAF cohorts with identical scenario keys. Figure 5 prefers long concurrent mixed cohorts and falls back to complete sequential iperf_only cohorts when only stable local verification runs are available.",
+  "scenario_key_fields": [
+    "pair_count",
+    "traffic_mode",
+    "traffic_profile",
+    "duration_s",
+    "iperf_len_bytes",
+    "mice_requests_per_pair",
+    "mixed_mode_runtime",
+    "sorted_pairs"
+  ],
+  "figure4": {
+    "tests_used": 4,
+    "values": {
+      "ecmp": [
+        1.9680026183667267,
+        1.9680026183667267,
+        1.9680026183667267,
+        1.9680026183667267
+      ],
+      "flowlet": [
+        1.9696071045159864,
+        1.9696071045159864,
+        1.9696071045159864,
+        1.9696071045159864
+      ],
+      "dlaf": [
+        0.004454342984409799,
+        0.004454342984409799,
+        0.004454342984409799,
+        0.004454342984409799
+      ]
+    }
+  },
+  "metrics": {
+    "throughput_efficiency": {
+      "cohorts_used": 1,
+      "means": {
+        "ecmp": 0.127073923780505,
+        "flowlet": 0.19661410434889884,
+        "dlaf": 0.22360551185399424
+      },
+      "sem": {
+        "ecmp": 0.0,
+        "flowlet": 0.0,
+        "dlaf": 0.0
+      },
+      "ranking": [
+        "dlaf",
+        "flowlet",
+        "ecmp"
+      ]
+    },
+    "raw_throughput": {
+      "cohorts_used": 1,
+      "means": {
+        "ecmp": 0.778,
+        "flowlet": 0.86,
+        "dlaf": 0.904
+      },
+      "sem": {
+        "ecmp": 0.0,
+        "flowlet": 0.0,
+        "dlaf": 0.0
+      },
+      "ranking": [
+        "dlaf",
+        "flowlet",
+        "ecmp"
+      ]
+    },
+    "load_balance": {
+      "cohorts_used": 1,
+      "means": {
+        "ecmp": 1.4743525479850499,
+        "flowlet": 1.091423054043019,
+        "dlaf": 1.0106800223935986
+      },
+      "sem": {
+        "ecmp": 0.0,
+        "flowlet": 0.0,
+        "dlaf": 0.0
+      },
+      "ranking": [
+        "dlaf",
+        "flowlet",
+        "ecmp"
+      ]
+    },
+    "fairness": {
+      "cohorts_used": 1,
+      "means": {
+        "ecmp": 1.0,
+        "flowlet": 1.0000000000000002,
+        "dlaf": 1.0
+      },
+      "sem": {
+        "ecmp": 0.0,
+        "flowlet": 0.0,
+        "dlaf": 0.0
+      },
+      "ranking": [
+        "flowlet",
+        "ecmp",
+        "dlaf"
+      ]
+    },
+    "loss": {
+      "cohorts_used": 1,
+      "means": {
+        "ecmp": 0.0,
+        "flowlet": 0.0,
+        "dlaf": 0.0
+      },
+      "sem": {
+        "ecmp": 0.0,
+        "flowlet": 0.0,
+        "dlaf": 0.0
+      },
+      "ranking": [
+        "ecmp",
+        "flowlet",
+        "dlaf"
+      ]
+    }
+  }
+}

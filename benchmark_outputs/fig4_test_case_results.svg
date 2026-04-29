@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="560" viewBox="0 0 1080 560">
+<style>
+text{font-family:Arial,Helvetica,sans-serif;fill:#20242a}
+.title{font-size:22px;font-weight:700}
+.axis{stroke:#20242a;stroke-width:1.2}
+.grid{stroke:#d7dde5;stroke-width:1}
+.tick{font-size:12px;fill:#4b5563}
+.label{font-size:13px;fill:#303846}
+.value{font-size:12px;fill:#303846;font-weight:700}
+.legend{font-size:13px;fill:#303846}
+</style>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="540.00" y="34" class="title" text-anchor="middle">Test Case Results</text>
+<line x1="86" y1="64" x2="86" y2="472" class="axis"/>
+<line x1="86" y1="472" x2="890" y2="472" class="axis"/>
+<line x1="86" y1="472.00" x2="890" y2="472.00" class="grid"/>
+<text x="76" y="476.00" class="tick" text-anchor="end">0</text>
+<line x1="86" y1="390.40" x2="890" y2="390.40" class="grid"/>
+<text x="76" y="394.40" class="tick" text-anchor="end">0.0522</text>
+<line x1="86" y1="308.80" x2="890" y2="308.80" class="grid"/>
+<text x="76" y="312.80" class="tick" text-anchor="end">0.104</text>
+<line x1="86" y1="227.20" x2="890" y2="227.20" class="grid"/>
+<text x="76" y="231.20" class="tick" text-anchor="end">0.157</text>
+<line x1="86" y1="145.60" x2="890" y2="145.60" class="grid"/>
+<text x="76" y="149.60" class="tick" text-anchor="end">0.209</text>
+<line x1="86" y1="64.00" x2="890" y2="64.00" class="grid"/>
+<text x="76" y="68.00" class="tick" text-anchor="end">0.261</text>
+<text x="22" y="268.00" class="label" text-anchor="middle" transform="rotate(-90 22 268.00)">Std. deviation / average flow</text>
+<text x="143.83" y="512" class="label" text-anchor="middle">ECMP</text>
+<rect x="87.00" y="321.49" width="26.92" height="150.51" fill="#355c7d"/>
+<rect x="115.92" y="248.72" width="26.92" height="223.28" fill="#c06c84"/>
+<rect x="144.83" y="177.35" width="26.92" height="294.65" fill="#6c9a8b"/>
+<rect x="173.75" y="114.11" width="26.92" height="357.89" fill="#f2a65a"/>
+<text x="281.50" y="512" class="label" text-anchor="middle">Flowlet</text>
+<rect x="224.67" y="328.94" width="26.92" height="143.06" fill="#355c7d"/>
+<rect x="253.58" y="287.25" width="26.92" height="184.75" fill="#c06c84"/>
+<rect x="282.50" y="247.33" width="26.92" height="224.67" fill="#6c9a8b"/>
+<rect x="311.42" y="195.53" width="26.92" height="276.47" fill="#f2a65a"/>
+<text x="419.17" y="512" class="label" text-anchor="middle">2hash DLAF</text>
+<rect x="362.33" y="389.84" width="26.92" height="82.16" fill="#355c7d"/>
+<rect x="391.25" y="359.73" width="26.92" height="112.27" fill="#c06c84"/>
+<rect x="420.17" y="333.51" width="26.92" height="138.49" fill="#6c9a8b"/>
+<rect x="449.08" y="307.99" width="26.92" height="164.01" fill="#f2a65a"/>
+<text x="556.83" y="512" class="label" text-anchor="middle">2hash DLAF PLC</text>
+<rect x="500.00" y="461.84" width="26.92" height="10.16" fill="#355c7d"/>
+<rect x="528.92" y="467.16" width="26.92" height="4.84" fill="#c06c84"/>
+<rect x="557.83" y="465.12" width="26.92" height="6.88" fill="#6c9a8b"/>
+<rect x="586.75" y="467.62" width="26.92" height="4.38" fill="#f2a65a"/>
+<text x="694.50" y="512" class="label" text-anchor="middle">4hash DLAF</text>
+<rect x="637.67" y="407.93" width="26.92" height="64.07" fill="#355c7d"/>
+<rect x="666.58" y="382.92" width="26.92" height="89.08" fill="#c06c84"/>
+<rect x="695.50" y="364.17" width="26.92" height="107.83" fill="#6c9a8b"/>
+<rect x="724.42" y="343.85" width="26.92" height="128.15" fill="#f2a65a"/>
+<text x="832.17" y="512" class="label" text-anchor="middle">4hash DLAF PLC</text>
+<rect x="775.33" y="468.09" width="26.92" height="3.91" fill="#355c7d"/>
+<rect x="804.25" y="469.03" width="26.92" height="2.97" fill="#c06c84"/>
+<rect x="833.17" y="467.00" width="26.92" height="5.00" fill="#6c9a8b"/>
+<rect x="862.08" y="469.81" width="26.92" height="2.19" fill="#f2a65a"/>
+<rect x="914" y="68" width="16" height="16" fill="#355c7d"/>
+<text x="938" y="81" class="legend">Test Case 1</text>
+<rect x="914" y="96" width="16" height="16" fill="#c06c84"/>
+<text x="938" y="109" class="legend">Test Case 2</text>
+<rect x="914" y="124" width="16" height="16" fill="#6c9a8b"/>
+<text x="938" y="137" class="legend">Test Case 3</text>
+<rect x="914" y="152" width="16" height="16" fill="#f2a65a"/>
+<text x="938" y="165" class="legend">Test Case 4</text>
+</svg>

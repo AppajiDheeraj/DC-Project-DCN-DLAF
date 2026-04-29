@@ -1,0 +1,4 @@
+Algorithm,Throughput (Mbps),Protocol,RTT (ms),Loss (%),Load SD (pkts),SD/Mean,Source Summary
+ECMP,0.778,udp,10.653500000000001,0.0,319.1973266387633,1.4743525479850499,/home/appajidheeraj/DCN-DLAF/DC-Project-DCN-DLAF/benchmarks/results/ecmp_viva_20260429_214454/summary.json
+FLOWLET,0.86,udp,12.473,0.0,248.2987447947868,1.091423054043019,/home/appajidheeraj/DCN-DLAF/DC-Project-DCN-DLAF/benchmarks/results/flowlet_viva_20260429_214600/summary.json
+DLAF,0.904,udp,16.715375,0.0,235.99378522890527,1.0106800223935986,/home/appajidheeraj/DCN-DLAF/DC-Project-DCN-DLAF/benchmarks/results/dlaf_viva_20260429_214706/summary.json

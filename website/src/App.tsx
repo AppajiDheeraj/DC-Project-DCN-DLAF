@@ -3,6 +3,7 @@ import NavBar from './components/NavBar';
 import Home from './pages/Home';
 import Concepts from './pages/Concepts';
 import Simulator from './pages/Simulator';
+import Results from './pages/Results';
 import P4Code from './pages/P4Code';
 
 export default function App() {
@@ -15,6 +16,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/concepts" element={<Concepts />} />
             <Route path="/simulator" element={<Simulator />} />
+            <Route path="/results" element={<Results />} />
             <Route path="/p4" element={<P4Code />} />
           </Routes>
         </main>

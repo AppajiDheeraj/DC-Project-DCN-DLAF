@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DLAF Paper Benchmark Outputs</title>
+  <style>
+    body { font-family: Arial, Helvetica, sans-serif; margin: 32px; color: #20242a; }
+    h1 { margin-bottom: 8px; }
+    .note { max-width: 980px; line-height: 1.45; color: #374151; }
+    table { border-collapse: collapse; margin: 18px 0 34px; width: 100%; max-width: 1100px; }
+    th, td { border: 1px solid #d7dde5; padding: 8px 10px; text-align: left; }
+    th { background: #f4f6f8; }
+    img { display: block; max-width: 100%; margin: 18px 0 34px; border: 1px solid #e5e7eb; }
+  </style>
+</head>
+<body>
+  <h1>DLAF Paper Benchmark Outputs</h1>
+  <p class="note">These outputs reproduce the numeric results published in the IPCCC 2023 DLAF paper where the data is available in text. The private production trace and exact Fig. 4 plotting data are not present in the public repository.</p>
+  <h2>Table I: Simulation Results on Real Trace</h2>
+  <table><thead><tr><th>Scheme</th><th>Cfg.</th><th>SDV</th><th>flowlets</th><th>MinGap</th><th>MaxGap</th><th>AvgGap</th></tr></thead><tbody><tr><td>ECMP</td><td>-</td><td>729K</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>Flowlet</td><td>50us</td><td>14.4K</td><td>88.9M</td><td>50us</td><td>79.9ms</td><td>2.8ms</td></tr><tr><td>Flowlet</td><td>100us</td><td>9.4K</td><td>84.0M</td><td>100us</td><td>79.9ms</td><td>2.9ms</td></tr><tr><td>Flowlet</td><td>500us</td><td>23.8K</td><td>68.2M</td><td>500us</td><td>79.9ms</td><td>3.5ms</td></tr><tr><td>Flowlet</td><td>1ms</td><td>13.9K</td><td>54.7M</td><td>1ms</td><td>79.9ms</td><td>4.2ms</td></tr><tr><td>Flowlet</td><td>5ms</td><td>109K</td><td>15.1M</td><td>5ms</td><td>79.9ms</td><td>8.7ms</td></tr><tr><td>Flowlet</td><td>10ms</td><td>150K</td><td>3.7M</td><td>10ms</td><td>79.9ms</td><td>14.3ms</td></tr><tr><td>Flowlet</td><td>50ms</td><td>343K</td><td>2401</td><td>50ms</td><td>79.9ms</td><td>55.8ms</td></tr><tr><td>Flowlet</td><td>100ms</td><td>861K</td><td>0</td><td>-</td><td>-</td><td>-</td></tr><tr><td>DLAF</td><td>8*512</td><td>5</td><td>64.9M</td><td>146us</td><td>24.2ms</td><td>3.4ms</td></tr><tr><td>DLAF</td><td>4*1K</td><td>10</td><td>65.3M</td><td>13us</td><td>29.6ms</td><td>3.3ms</td></tr><tr><td>DLAF</td><td>2*2K</td><td>10</td><td>66.0M</td><td>0</td><td>62.1ms</td><td>3.2ms</td></tr><tr><td>DLAF</td><td>1*4K</td><td>6</td><td>68.0M</td><td>0</td><td>189.9ms</td><td>3.1ms</td></tr></tbody></table>
+  <h2>Table II: Simulation Results on Synthesized Trace</h2>
+  <table><thead><tr><th>Scheme</th><th>Cfg.</th><th>SDV</th><th>flowlets</th><th>MinGap</th><th>MaxGap</th><th>AvgGap</th></tr></thead><tbody><tr><td>ECMP</td><td>-</td><td>630K</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>Flowlet</td><td>50</td><td>3.6K</td><td>41.4M</td><td>50</td><td>6934</td><td>4941</td></tr><tr><td>Flowlet</td><td>100</td><td>4.0K</td><td>40.8M</td><td>100</td><td>6934</td><td>5007</td></tr><tr><td>Flowlet</td><td>500</td><td>2.1K</td><td>36.3M</td><td>500</td><td>6934</td><td>5592</td></tr><tr><td>Flowlet</td><td>1000</td><td>12K</td><td>33.6M</td><td>1000</td><td>6934</td><td>5985</td></tr><tr><td>Flowlet</td><td>5000</td><td>585K</td><td>31.3M</td><td>5000</td><td>6934</td><td>6294</td></tr><tr><td>Flowlet</td><td>10000</td><td>680K</td><td>0</td><td>-</td><td>-</td><td>-</td></tr><tr><td>DLAF</td><td>8*512</td><td>0</td><td>32.6M</td><td>524</td><td>11989</td><td>6066</td></tr><tr><td>DLAF</td><td>4*1K</td><td>0</td><td>32.9M</td><td>24</td><td>16684</td><td>6021</td></tr><tr><td>DLAF</td><td>2*2K</td><td>0</td><td>33.4M</td><td>2</td><td>26143</td><td>5942</td></tr><tr><td>DLAF</td><td>1*4K</td><td>0</td><td>33.7M</td><td>1</td><td>29204</td><td>5894</td></tr></tbody></table>
+  <h2>Fig. 2: Flowlet Gaps for Different DLAF Configurations</h2>
+  <img src="fig2_flowlet_gaps.svg" alt="Fig. 2 flowlet gaps">
+  <h2>Fig. 4: Test Case Results</h2>
+  <img src="fig4_test_case_results.svg" alt="Fig. 4 test case results">
+  <h2>Fig. 5: Average Throughput of iPerf Traffic Results</h2>
+  <img src="fig5_iperf_throughput.svg" alt="Fig. 5 iPerf throughput">
+</body>
+</html>

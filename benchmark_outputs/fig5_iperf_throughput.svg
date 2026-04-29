@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="520" viewBox="0 0 920 520">
+<style>
+text{font-family:Arial,Helvetica,sans-serif;fill:#20242a}
+.title{font-size:22px;font-weight:700}
+.axis{stroke:#20242a;stroke-width:1.2}
+.grid{stroke:#d7dde5;stroke-width:1}
+.tick{font-size:12px;fill:#4b5563}
+.label{font-size:13px;fill:#303846}
+.value{font-size:12px;fill:#303846;font-weight:700}
+.legend{font-size:13px;fill:#303846}
+</style>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="460.00" y="34" class="title" text-anchor="middle">Average Throughput of iPerf Traffic Results</text>
+<line x1="120" y1="64" x2="120" y2="446" class="axis"/>
+<line x1="120" y1="446" x2="866" y2="446" class="axis"/>
+<line x1="120.00" y1="64" x2="120.00" y2="446" class="grid"/>
+<text x="120.00" y="470" class="tick" text-anchor="middle">0</text>
+<line x1="269.20" y1="64" x2="269.20" y2="446" class="grid"/>
+<text x="269.20" y="470" class="tick" text-anchor="middle">200</text>
+<line x1="418.40" y1="64" x2="418.40" y2="446" class="grid"/>
+<text x="418.40" y="470" class="tick" text-anchor="middle">400</text>
+<line x1="567.60" y1="64" x2="567.60" y2="446" class="grid"/>
+<text x="567.60" y="470" class="tick" text-anchor="middle">600</text>
+<line x1="716.80" y1="64" x2="716.80" y2="446" class="grid"/>
+<text x="716.80" y="470" class="tick" text-anchor="middle">800</text>
+<line x1="866.00" y1="64" x2="866.00" y2="446" class="grid"/>
+<text x="866.00" y="470" class="tick" text-anchor="middle">1000</text>
+<text x="104" y="123.00" class="label" text-anchor="end">ECMP</text>
+<rect x="120" y="64.00" width="580.39" height="110.00" fill="#4f9aaa"/>
+<text x="104" y="259.00" class="label" text-anchor="end">Flowlet</text>
+<rect x="120" y="200.00" width="641.75" height="110.00" fill="#4f9aaa"/>
+<text x="104" y="395.00" class="label" text-anchor="end">DLAF</text>
+<rect x="120" y="336.00" width="674.61" height="110.00" fill="#4f9aaa"/>
+<text x="493.00" y="498" class="label" text-anchor="middle">kilobits per second</text>
+</svg>
